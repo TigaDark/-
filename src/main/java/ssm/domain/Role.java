@@ -2,7 +2,7 @@ package ssm.domain;
 
 public class Role {
     private int id;
-    private String roelname;
+    private String rolename;
 
     public int getId() {
         return id;
@@ -12,11 +12,11 @@ public class Role {
         this.id = id;
     }
 
-    public String getRoelname() {
-        return roelname;
+    public String getRolename() {
+        return rolename;
     }
 
-    public void setRoelname(String roelname) {
-        this.roelname = roelname;
+    public void setRolename(String rolename) {
+        this.rolename = rolename;
     }
 }

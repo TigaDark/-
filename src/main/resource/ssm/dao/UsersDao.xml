@@ -5,7 +5,19 @@
 
 <mapper namespace="ssm.dao.UsersDao">
 
-    <select id="findByName"  resultType="ssm.domain.Users" parameterType="String">
+    <resultMap id="usersMap" type="ssm.domain.Users">
+    <id property="id" column="id"></id>
+    <result property="username" column="username"></result>
+    <result property="password" column="password"></result>
+    <result property="realname" column="realname"></result>
+    <result property="phone" column="phone"></result>
+    <result property="email" column="email"></result>
+    <result property="address" column="address"></result>
+    <association property="role" javaType="ssm.domain.Role" select="ssm.dao.RoleDao.findRoleByuserid" column="rid">
+    </association>
+    </resultMap>
+
+    <select id="findByName"  resultMap="usersMap" parameterType="String">
         select * from users where username=#{name}
     </select>
 

@@ -23,4 +23,9 @@
     <select id="findContractByInfo"  resultMap="contractMap" parameterType="String">
         select * from contract
     </select>
+
+    <update id="editContractProcess">
+        update contract set progress=#{progress},start_time=#{times} where id=#{id}
+    </update>
+
 </mapper>

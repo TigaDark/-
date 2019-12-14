@@ -26,10 +26,6 @@ public class UsersController {
         //获取用户身份 查询信息 返回其信息 暂时未验证密码账号
         //应该要把其角色查出来！！！
         Users users=usersService.findByName(user.getUsername());
-        Role role = new Role();
-        role.setId(2);
-        role.setRoelname("销售管理员");
-        users.setRole(role);
         Map<String,Object> data=new HashMap<>();
         Response response=new Response();
         response.put("user",users);

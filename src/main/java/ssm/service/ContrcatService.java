@@ -13,4 +13,10 @@ public interface ContrcatService {
      * @throws Exception
      */
     List<Contract> findContractByInfo(SelectInfo selectInfo) throws Exception;
+
+    /**
+     * 根据合同id 修改对应合同的进度
+     * @param contract
+     */
+    void editContractProcess(Contract contract);
 }

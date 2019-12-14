@@ -17,4 +17,8 @@
     <select id="findPurchaseById"  resultMap="purchaseMap" parameterType="int">
         select * from purchase p,customer_purchase cp where p.id=#{id} and p.id=cp.id
     </select>
+    <update id="editgoodsQuantitystatus">
+        update purchase_goods set goodstatus=#{status} where id=#{id}
+    </update>
+
 </mapper>

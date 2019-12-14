@@ -9,6 +9,7 @@ import ssm.domain.GoodsQuantity;
 import ssm.domain.SelectInfo;
 import ssm.service.ContrcatService;
 
+import java.util.Date;
 import java.util.List;
 @Service("contrcatService")
 public class ContrcatServiceImpl implements ContrcatService {
@@ -33,5 +34,11 @@ public class ContrcatServiceImpl implements ContrcatService {
             contract.setTotalmoney(total);
         }
         return contracts;
+    }
+
+    @Override
+    public void editContractProcess(Contract contract) {
+        //注意 时间也要修改！！！
+        contrcatDao.editContractProcess(contract.getId(),contract.getProgress()+1,new Date());
     }
 }

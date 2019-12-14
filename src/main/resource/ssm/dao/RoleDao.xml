@@ -7,4 +7,9 @@
     <select id="findPermissionById"  resultType="ssm.domain.Permission" parameterType="int">
         select * from permission where id in((select permissionid from role_permission where roleid=#{roleid}))
     </select>
+
+
+    <select id="findRoleByuserid"  resultType="ssm.domain.Role" parameterType="int">
+        select * from role where id=#{id}
+    </select>
 </mapper>

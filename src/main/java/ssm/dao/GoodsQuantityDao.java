@@ -4,5 +4,5 @@ import ssm.domain.GoodsQuantity;
 
 public interface GoodsQuantityDao {
 
-    GoodsQuantity findGoodsQuantityByPurchaseId(int id);
+    GoodsQuantity findGoodsQuantityByPurchaseId(int id) throws Exception;
 }

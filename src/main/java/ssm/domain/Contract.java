@@ -1,6 +1,7 @@
 package ssm.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import ssm.util.DateUtil;
 
 import java.util.Date;
 
@@ -13,12 +14,36 @@ public class Contract {
     private int fahuoid;
     private int jinhuoid;
     private int totalmoney;
-    //0-未完成 1-正在进行 3-已完成  注意没有2
+    //0-未完成 1-正在进行 2-已完成
     private int progress;
     private Customer customer;
     private Purchase purchase;
     private Users user;
+    private String end_timeStr;
+    private String start_timeStr;
 
+    public void setEnd_timeStr(String end_timeStr) {
+        this.end_timeStr = end_timeStr;
+    }
+
+    public String getStart_timeStr() {
+        //如果不是默认值2000年 那么就是未开始合同
+        if(start_time.getYear()!=100)
+            return DateUtil.dateTostring(start_time,"YYYY-MM-dd HH:mm");
+        else
+            return "未执行";
+    }
+
+    public String getEnd_timeStr() {
+        if(end_time.getYear()!=100)
+            return DateUtil.dateTostring(end_time,"YYYY-MM-dd HH:mm");
+        else
+            return "未结束";
+    }
+
+    public void setStart_timeStr(String start_timeStr) {
+        this.start_timeStr = start_timeStr;
+    }
 
     public int getProgress() {
         return progress;
@@ -62,6 +87,7 @@ public class Contract {
     public Date getEnd_time() {
         return end_time;
     }
+
 
     public void setEnd_time(Date end_time) {
         this.end_time = end_time;
