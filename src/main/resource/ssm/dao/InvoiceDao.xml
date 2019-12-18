@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="ssm.dao.InvoiceDao">
+    <resultMap id="invoiceMap" type="ssm.domain.Invoice">
+        <id property="id" column="id"></id>
+        <result property="issent" column="issent"></result>
+        <association property="goodsQuantity" javaType="ssm.domain.GoodsQuantity" select="ssm.dao.GoodsQuantityDao.findGoodsQuantityById" column="purchase_goodsid">
+        </association>
+        <association property="customer" javaType="ssm.domain.Customer" select="ssm.dao.CustomerDao.findCustomerById" column="customerid">
+        </association>
+    </resultMap>
+
+    <insert id="createInvoice" parameterType="ssm.domain.Invoice" keyProperty="id" useGeneratedKeys="true">
+        insert into Invoice (issent,purchase_goodsid,customerid) values (#{invoice.issent},#{invoice.goodsQuantity.id},#{customerid})
+    </insert>
+
+
+    <select id="findInvoiceByInfo"  resultMap="invoiceMap" parameterType="String">
+        select * from invoice
+    </select>
+
+    <update id="editissentById" parameterType="int">
+        update invoice set issent=#{issent} where id=#{id}
+    </update>
+</mapper>

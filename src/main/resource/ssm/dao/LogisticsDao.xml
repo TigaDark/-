@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssm.dao.LogisticsDao">
+
+    <select id="findLogisticsByInvoiceId"  resultType="ssm.domain.Logistics" parameterType="int">
+        select * from logistics where id in(select logisticsid from invoice_logistics where invoiceid=#{id})
+    </select>
+
+    <insert id="addLogistics"  parameterType="ssm.domain.Logistics" keyProperty="id" useGeneratedKeys="true" >
+        <selectKey keyProperty="id" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into logistics (times,context) values (#{times},#{context})
+    </insert>
+
+
+    <insert id="addLogisticsByInvoiceId"  keyProperty="id" useGeneratedKeys="true">
+        insert into invoice_logistics (invoiceid,logisticsid) values (#{iid},#{lid})
+    </insert>
+</mapper>

@@ -4,7 +4,7 @@ CREATE TABLE `users` (
   `rid` int(11) NOT NULL,
   `username` varchar(30) default NULL,
   `password` varchar(30) default NULL,
-  `realname` varchar(30) default NULL, 
+  `realname` varchar(30) default NULL,
   `phone` varchar(30) default NULL,
   `email` varchar(30) default NULL,
   `address` varchar(30) default NULL,
@@ -113,8 +113,8 @@ CREATE TABLE `contract` (
   `customerid` int(11) NOT NULL,
   `purchaseid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
-  `start_time` timestamp default NULL, 
-  `end_time` timestamp default NULL, 
+  `start_time` timestamp,
+  `end_time` timestamp,
   `fahuoid` int(11) default NULL,
   `jinhuoid` int(11) default NULL,
   `totalmoney` int(11) default NULL,
@@ -123,7 +123,49 @@ CREATE TABLE `contract` (
   FOREIGN KEY (`purchaseid`) REFERENCES `purchase` (`id`),
   FOREIGN KEY (`userid`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-insert  into `contract`(`id`,`customerid`,`purchaseid`,`userid`,`start_time`,`end_time`,`fahuoid`,`jinhuoid`,`totalmoney`) values (1,1,1,4,null,null,null,null,null);
+insert  into `contract`(`id`,`customerid`,`purchaseid`,`userid`,`start_time`,`end_time`,`fahuoid`,`jinhuoid`,`totalmoney`) values (1,1,1,2,'0000-00-00 00:00:00','0000-00-00 00:00:00',null,null,null);
+
+
+
+DROP TABLE IF EXISTS `logistics`;
+CREATE TABLE `logistics` (
+  `id` int(11) NOT NULL auto_increment,
+  `times` timestamp NOT NULL,
+  `context` varchar(30),
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `invoice`;
+CREATE TABLE `invoice` (
+  `id` int(11) NOT NULL auto_increment,
+  `purchase_goodsid` int(11) NOT NULL,
+  `issent` int(2) NOT NULL,
+  PRIMARY KEY  (`id`),
+  FOREIGN KEY (`purchase_goodsid`) REFERENCES `purchase_goods` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `invoice_logistics`;
+CREATE TABLE `invoice_logistics` (
+  `id` int(11) NOT NULL auto_increment,
+  `invoiceid` int(11) NOT NULL,
+  `logisticsid` int(11) NOT NULL,
+  PRIMARY KEY  (`id`),
+  FOREIGN KEY (`invoiceid`) REFERENCES `invoice` (`id`),
+  FOREIGN KEY (`logisticsid`) REFERENCES `logistics` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+DROP TABLE IF EXISTS `buyorder`;
+CREATE TABLE `buyorder` (
+  `id` int(11) NOT NULL auto_increment,
+  `goodsquantityid` int(11) NOT NULL,
+  `goodsname` varchar(40) NOT NULL,
+  `minquantity` int(11) NOT NULL,
+  `realquantity` int(11) NOT NULL,
+  `isbuy` int(2) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 

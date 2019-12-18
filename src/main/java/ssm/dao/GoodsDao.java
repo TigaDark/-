@@ -9,4 +9,5 @@ public interface GoodsDao {
 
     void editgoodsNums(@Param(value = "gid")int id, @Param(value = "nums") int nums) throws Exception;
 
+    Goods findGoodsByName(String goodsname);
 }

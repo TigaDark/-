@@ -10,8 +10,6 @@
         <id property="id" column="id"></id>
         <result property="quantity" column="quantity"></result>
         <result property="goodstatus" column="goodstatus"></result>
-        <!--<association property="goods" javaType="ssm.domain.Goods" select="ssm.dao.GoodsDao.findGoodsByQuantityId" column="id">-->
-        <!--</association>-->
         <association property="goods" javaType="ssm.domain.Goods">
             <id property="id" column="gid"></id>
             <result property="name" column="name"></result>
@@ -24,4 +22,17 @@
     <select id="findGoodsQuantityByPurchaseId"  resultMap="goodsQuantityMap" parameterType="int">
         select *,g.id as gid from purchase_goods,goods g where purchaseid=#{id} and goodsid=g.id
     </select>
+
+    <select id="findGoodsQuantityById"  resultMap="goodsQuantityMap" parameterType="int">
+        select *,g.id as gid from purchase_goods pg,goods g where pg.id=#{id} and goodsid=g.id
+    </select>
+
+    <update id="editgoodsstatusByid" parameterType="int">
+        update purchase_goods set goodstatus=#{goodstatus} where id=#{id}
+    </update>
+
+    <select id="findPurchaseIdByid"  resultType="int" parameterType="int">
+        select purchaseid from purchase_goods where id=#{id}
+    </select>
+
 </mapper>

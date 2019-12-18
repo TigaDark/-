@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="ssm.dao.BuyOrderDao">
+
+    <insert id="addBuyOrder" parameterType="ssm.domain.Buyorder" keyProperty="id" useGeneratedKeys="true">
+        insert into buyorder (goodsquantityid,goodsname,minquantity,realquantity,isbuy) values (#{goodsquantityid},#{goodsname},#{minquantity},#{realquantity},#{isbuy})
+    </insert>
+    <select id="findBuyOrderByInfo"  resultType="ssm.domain.Buyorder" parameterType="String">
+        select * from buyorder
+    </select>
+
+    <update id="editBuyOrder">
+        update buyorder set realquantity=#{realquantity} , isbuy=#{status} where id=#{id}
+    </update>
+</mapper>

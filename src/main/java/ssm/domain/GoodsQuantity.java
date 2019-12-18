@@ -5,9 +5,10 @@ public class GoodsQuantity {
     //这个商品的购买数量
     private int quantity;
     //发货状态
-    //0-未发货 1-发货中 2-发货完成
+    //0-未发货 1-发货中 2-发货完成 3-正在进货中
     private int goodstatus;
     private Goods goods;
+
 
     public int getGoodstatus() {
         return goodstatus;

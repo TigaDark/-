@@ -10,4 +10,6 @@ public interface PurchaseDao {
     Purchase findPurchaseById(int id) throws Exception;
 
     void editgoodsQuantitystatus(@Param(value = "id")int id, @Param(value = "status") int status);
+
+    int findPurchaseByGoodsQuantityId(int id);
 }

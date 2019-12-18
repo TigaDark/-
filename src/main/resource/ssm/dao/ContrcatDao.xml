@@ -27,5 +27,7 @@
     <update id="editContractProcess">
         update contract set progress=#{progress},start_time=#{times} where id=#{id}
     </update>
-
+    <update id="editContractEndProgressByPurchaseId">
+        update contract set progress=#{progress},end_time=#{endtimes} where purchaseid=#{pruchaseid}
+    </update>
 </mapper>

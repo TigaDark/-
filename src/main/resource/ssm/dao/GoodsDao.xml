@@ -13,4 +13,7 @@
         update goods set nums=#{nums} where id=#{gid}
     </update>
 
+    <select id="findGoodsByName"  resultType="ssm.domain.Goods" parameterType="string">
+        select * from goods where name=#{name}
+    </select>
 </mapper>

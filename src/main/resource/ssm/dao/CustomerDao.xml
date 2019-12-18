@@ -7,4 +7,8 @@
     <select id="findCustomerById"  resultType="ssm.domain.Customer" parameterType="int">
         select * from customer where id=#{id}
     </select>
+
+    <select id="findCustomerByPurchaseId"  resultType="int" parameterType="int">
+        select customerid from customer_purchase where purchaseid=#{id}
+    </select>
 </mapper>

@@ -21,4 +21,7 @@
         update purchase_goods set goodstatus=#{status} where id=#{id}
     </update>
 
+    <select id="findPurchaseByGoodsQuantityId"  resultType="int" parameterType="int">
+        select purchaseid from purchase_goods where id=#{id}
+    </select>
 </mapper>
