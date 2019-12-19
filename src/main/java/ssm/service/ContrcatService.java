@@ -1,6 +1,8 @@
 package ssm.service;
 
 import ssm.domain.Contract;
+import ssm.domain.ContractForm;
+import ssm.domain.ContracteditForm;
 import ssm.domain.SelectInfo;
 
 import java.util.List;
@@ -19,4 +21,8 @@ public interface ContrcatService {
      * @param contract
      */
     void editContractProcess(Contract contract);
+
+    void addContract(ContractForm contractForm);
+
+    void editContract(ContracteditForm contracteditForm);
 }

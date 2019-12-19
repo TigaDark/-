@@ -2,6 +2,8 @@ package ssm.dao;
 
 import org.apache.ibatis.annotations.Param;
 import ssm.domain.Contract;
+import ssm.domain.ContractForm;
+import ssm.domain.ContracteditForm;
 
 import java.util.Date;
 import java.util.List;
@@ -13,4 +15,8 @@ public interface ContrcatDao {
     void editContractProcess(@Param(value = "id")int id, @Param(value = "progress")int progress, @Param(value = "times")Date times);
 
     void editContractEndProgressByPurchaseId(@Param(value = "pruchaseid")int pruchaseid, @Param(value = "progress")int progress,@Param(value = "endtimes")Date endtimes);
+
+    void addContract(ContractForm contractForm);
+
+    void editContract(ContracteditForm contracteditForm);
 }

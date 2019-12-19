@@ -11,4 +11,18 @@
     <select id="findCustomerByPurchaseId"  resultType="int" parameterType="int">
         select customerid from customer_purchase where purchaseid=#{id}
     </select>
+    <select id="findCustomerByInfo"  resultType="ssm.domain.Customer" parameterType="int">
+        select * from customer
+    </select>
+    <select id="findCustomerByName"  resultType="ssm.domain.Customer" parameterType="string">
+        select * from customer where name=#{name}
+    </select>
+    <insert id="addCustomer" parameterType="ssm.domain.Users">
+        insert into customer (name,phone,address,email) values (#{name},#{phone},#{address},#{email})
+    </insert>
+
+    <update id="editCustomer">
+        update customer set phone=#{phone},address=#{address},email=#{email},name=#{name} where id=#{id}
+    </update>
+
 </mapper>

@@ -1,5 +1,11 @@
 package ssm.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import ssm.util.DateUtil;
+
+import java.text.ParseException;
+import java.util.Date;
+
 public class Users {
     private int id;
     private String username;
@@ -8,8 +14,45 @@ public class Users {
     private String phone;
     private String email;
     private String address;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private Date entrytime;
     private Role role;
+    private String entrytimeStr;
 
+    public String getEntrytimeStr() {
+        if(entrytime!=null)
+            return DateUtil.dateTostring(entrytime,"YYYY-MM-dd");
+        else
+            return null;
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", realname='" + realname + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", entrytime=" + entrytime +
+                ", role=" + role +
+                ", entrytimeStr='" + entrytimeStr + '\'' +
+                '}';
+    }
+
+    public void setEntrytimeStr(String entrytimeStr) {
+        this.entrytimeStr = entrytimeStr;
+    }
+
+    public Date getEntrytime() throws ParseException {
+        return entrytime;
+    }
+
+    public void setEntrytime(Date entrytime) {
+        this.entrytime = entrytime;
+    }
 
     public int getId() {
         return id;
@@ -75,17 +118,4 @@ public class Users {
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return "Users{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", realname='" + realname + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", role=" + role +
-                '}';
-    }
 }

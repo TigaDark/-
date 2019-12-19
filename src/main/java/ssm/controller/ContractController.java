@@ -42,4 +42,28 @@ public class ContractController {
         response.success("执行合同成功",200);
         return response;
     }
+
+
+    @RequestMapping("/addContract")
+    public @ResponseBody Response addContract(@RequestBody ContractForm contractForm) throws Exception {
+        //根据合同id 修改对应的合同进度
+        contrcatService.addContract(contractForm);
+
+        Map<String,Object> data=new HashMap<>();
+        Response response=new Response();
+        response.success("添加合同成功！",200);
+        return response;
+    }
+
+    @RequestMapping("/editContract")
+    public @ResponseBody Response addContract(@RequestBody ContracteditForm contracteditForm) throws Exception {
+        //根据合同id 修改对应的合同进度
+        contrcatService.editContract(contracteditForm);
+
+        Map<String,Object> data=new HashMap<>();
+        Response response=new Response();
+        response.success("修改合同成功！",200);
+        return response;
+    }
+
 }

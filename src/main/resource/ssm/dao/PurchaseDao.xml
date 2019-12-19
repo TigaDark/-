@@ -14,6 +14,8 @@
         </collection>
     </resultMap>
 
+
+
     <select id="findPurchaseById"  resultMap="purchaseMap" parameterType="int">
         select * from purchase p,customer_purchase cp where p.id=#{id} and p.id=cp.id
     </select>
@@ -23,5 +25,9 @@
 
     <select id="findPurchaseByGoodsQuantityId"  resultType="int" parameterType="int">
         select purchaseid from purchase_goods where id=#{id}
+    </select>
+
+    <select id="checkPurchase"  resultType="ssm.domain.Contract" parameterType="int">
+        select * from contract where purchaseid=#{id}
     </select>
 </mapper>

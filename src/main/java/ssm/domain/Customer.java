@@ -3,7 +3,7 @@ package ssm.domain;
 public class Customer {
     private int id;
     private String name;
-    private String pthone;
+    private String phone;
     private String email;
     private String address;
 
@@ -12,7 +12,7 @@ public class Customer {
         return "Customer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", pthone='" + pthone + '\'' +
+                ", pthone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 '}';
@@ -34,12 +34,12 @@ public class Customer {
         this.name = name;
     }
 
-    public String getPthone() {
-        return pthone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPthone(String pthone) {
-        this.pthone = pthone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {

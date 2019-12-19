@@ -30,4 +30,12 @@
     <update id="editContractEndProgressByPurchaseId">
         update contract set progress=#{progress},end_time=#{endtimes} where purchaseid=#{pruchaseid}
     </update>
+
+    <insert id="addContract" parameterType="ssm.domain.ContractForm">
+        insert into contract (customerid,purchaseid,userid) values (#{customerid},#{purchaseid},#{userid})
+    </insert>
+
+    <update id="editContract">
+        update contract set customerid=#{customerid},purchaseid=#{purchaseid},userid=#{userid} where id=#{id}
+    </update>
 </mapper>

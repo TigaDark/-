@@ -10,6 +10,7 @@
     <result property="username" column="username"></result>
     <result property="password" column="password"></result>
     <result property="realname" column="realname"></result>
+    <result property="entrytime" column="entrytime"></result>
     <result property="phone" column="phone"></result>
     <result property="email" column="email"></result>
     <result property="address" column="address"></result>
@@ -24,4 +25,23 @@
     <select id="findById"  resultType="ssm.domain.Users" parameterType="int">
         select * from users where id=#{id}
     </select>
+
+    <select id="findByNameandRoleId"  resultMap="usersMap">
+        select * from users where realname=#{name} and rid=#{roleid}
+    </select>
+
+    <select id="findSaleByInfo"  resultMap="usersMap">
+        select * from users where rid=#{roleid}
+    </select>
+    <select id="findByuserNameandRoleId"  resultMap="usersMap">
+        select * from users where username=#{name} and rid=#{roleid}
+    </select>
+    <insert id="addsalers" parameterType="ssm.domain.Users">
+        insert into users (username,password,rid,realname,phone,address,entrytime,email) values (#{username},#{password},#{role.id},#{realname},#{phone},#{address},#{entrytime},#{email})
+    </insert>
+
+    <update id="editsaler">
+        update users set phone=#{phone},address=#{address},email=#{email},entrytime=#{entrytime} where id=#{id}
+    </update>
+
 </mapper>

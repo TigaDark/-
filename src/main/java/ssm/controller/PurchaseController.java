@@ -44,6 +44,21 @@ public class PurchaseController {
         return response;
     }
 
+    @RequestMapping("/checkPurchase")
+    public @ResponseBody Response checkPurchase(@RequestParam(required = true,name = "purchaseid") int purchaseid) throws Exception {
+        //验证该订单是否被录入合同了
+        Contract contract=purchaseService.checkPurchase(purchaseid);
+        //找出该订单的客户
+        Purchase purchase=purchaseService.findPurchaseById(purchaseid);
+        Response response=new Response();
+        response.put("purchase",purchase);
+        // null -录入过 否则录入过
+        if (contract!=null)
+            response.success("该清单已经录入过，请输入其他id!",201);
+        else
+            response.success("该清单可用录入",200);
+        return response;
+    }
 
 
 }

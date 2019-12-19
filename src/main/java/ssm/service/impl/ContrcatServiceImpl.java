@@ -4,9 +4,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ssm.dao.ContrcatDao;
-import ssm.domain.Contract;
-import ssm.domain.GoodsQuantity;
-import ssm.domain.SelectInfo;
+import ssm.domain.*;
 import ssm.service.ContrcatService;
 
 import java.util.Date;
@@ -40,5 +38,16 @@ public class ContrcatServiceImpl implements ContrcatService {
     public void editContractProcess(Contract contract) {
         //注意 时间也要修改！！！
         contrcatDao.editContractProcess(contract.getId(),contract.getProgress()+1,new Date());
+    }
+
+    @Override
+    public void addContract(ContractForm contractForm) {
+        //添加合同
+        contrcatDao.addContract(contractForm);
+    }
+
+    @Override
+    public void editContract(ContracteditForm contracteditForm) {
+        contrcatDao.editContract(contracteditForm);
     }
 }

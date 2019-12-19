@@ -3,10 +3,7 @@ package ssm.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ssm.dao.*;
-import ssm.domain.Goods;
-import ssm.domain.GoodsQuantity;
-import ssm.domain.Invoice;
-import ssm.domain.Purchase;
+import ssm.domain.*;
 import ssm.service.PurchaseService;
 
 import java.util.List;
@@ -44,5 +41,10 @@ public class PurchaseServiceImpl implements PurchaseService {
         goodsDao.editgoodsNums(goodsQuantity.getGoods().getId(),goodsQuantity.getGoods().getNums()-goodsQuantity.getQuantity());
 
 
+    }
+
+    @Override
+    public Contract checkPurchase(int purchaseid) {
+        return purchaseDao.checkPurchase(purchaseid);
     }
 }

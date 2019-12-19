@@ -1,5 +1,6 @@
 package ssm.service;
 
+import ssm.domain.Contract;
 import ssm.domain.GoodsQuantity;
 import ssm.domain.Purchase;
 
@@ -21,4 +22,6 @@ public interface PurchaseService {
      * @throws Exception
      */
     void createSentGoodsOreder(GoodsQuantity id) throws Exception;
+
+    Contract checkPurchase(int purchaseid);
 }
