@@ -34,15 +34,7 @@ public class PurchaseController {
         return response;
     }
 
-    @RequestMapping("/createSentGoodsOreder")
-    public @ResponseBody Response createSentGoodsOreder(@RequestBody GoodsQuantity goodsQuantity) throws Exception {
-        //获取发货单内容 goodsQuantity并生成发货单同时修改当前订单物品的发货状态
-        purchaseService.createSentGoodsOreder(goodsQuantity);
-        Map<String,Object> data=new HashMap<>();
-        Response response=new Response();
-        response.success("生成发货单成功",200);
-        return response;
-    }
+
 
     @RequestMapping("/checkPurchase")
     public @ResponseBody Response checkPurchase(@RequestParam(required = true,name = "purchaseid") int purchaseid) throws Exception {

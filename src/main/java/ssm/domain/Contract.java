@@ -7,13 +7,14 @@ import java.util.Date;
 
 public class Contract {
     private int id;
+    private String strid;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date start_time;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
     private Date end_time;
     private int fahuoid;
     private int jinhuoid;
-    private int totalmoney;
+    private double totalmoney;
     //0-未完成 1-正在进行 2-已完成
     private int progress;
     private Customer customer;
@@ -21,6 +22,14 @@ public class Contract {
     private Users user;
     private String end_timeStr;
     private String start_timeStr;
+
+    public String getStrid() {
+        return "CC-SJB-2019-000"+this.id;
+    }
+
+    public void setStrid(String strid) {
+        this.strid = strid;
+    }
 
     public void setEnd_timeStr(String end_timeStr) {
         this.end_timeStr = end_timeStr;
@@ -109,11 +118,11 @@ public class Contract {
         this.jinhuoid = jinhuoid;
     }
 
-    public int getTotalmoney() {
+    public double getTotalmoney() {
         return totalmoney;
     }
 
-    public void setTotalmoney(int totalmoney) {
+    public void setTotalmoney(double totalmoney) {
         this.totalmoney = totalmoney;
     }
 

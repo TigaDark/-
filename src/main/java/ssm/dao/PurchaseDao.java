@@ -15,4 +15,6 @@ public interface PurchaseDao {
     int findPurchaseByGoodsQuantityId(int id);
 
     Contract checkPurchase(int purchaseid);
+
+    int findPurchaseidBycontractid(int contractid);
 }

@@ -1,9 +1,9 @@
 package ssm.service;
 
 import ssm.domain.Contract;
-import ssm.domain.ContractForm;
-import ssm.domain.ContracteditForm;
-import ssm.domain.SelectInfo;
+import ssm.domain.Pojo.ContractForm;
+import ssm.domain.Pojo.ContracteditForm;
+import ssm.domain.Pojo.SelectInfo;
 
 import java.util.List;
 

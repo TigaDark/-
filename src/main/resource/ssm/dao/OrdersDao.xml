@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssm.dao.OrdersDao">
+
+
+    <resultMap id="orderMap" type="ssm.domain.Orders">
+        <id property="id" column="id"></id>
+        <result property="strid" column="strid"></result>
+        <result property="progress" column="progress"></result>
+        <association property="contract" javaType="ssm.domain.Contract" select="ssm.dao.ContrcatDao.findContractById" column="contractid">
+        </association>
+        <collection property="ordersGoodList" ofType="ssm.domain.OrdersGood" select="ssm.dao.OrdersGoodDao.findOrdersGoodBOrdersyId" column="id">
+        </collection>
+    </resultMap>
+
+    <insert id="addOrders" parameterType="ssm.domain.Orders" keyProperty="id" useGeneratedKeys="true" >
+        insert into orders (strid) values (#{strid})
+    </insert>
+    <insert id="addOrdersGoods"  keyProperty="id" useGeneratedKeys="true">
+        insert into orders_goods (ordersid,goodsid,quantity,goodstatus,ispay) values (#{ordersid},#{goodsid},#{nums},#{goodstatus},#{ispay})
+    </insert>
+    <insert id="addContractOrders"  keyProperty="id" useGeneratedKeys="true">
+        insert into contract_orders (contractid,ordersid) values (#{contractid},#{ordersid})
+    </insert>
+
+    <select id="findOrdersByInfo"  resultMap="orderMap" parameterType="String">
+        select * from orders,contract_orders where orders.id=contract_orders.ordersid
+    </select>
+
+    <select id="getGoodsListByOrdersId"  resultMap="orderMap" parameterType="int">
+        select * from orders where id=#{id}
+    </select>
+
+    <select id="findCustomerByordersid"  resultType="int">
+        select customerid from contract,contract_orders where contract.id=contract_orders.contractid and ordersid=#{id}
+    </select>
+
+    <update id="editProgressByid">
+        update orders set progress=#{progress} where id=#{ordersid}
+    </update>
+    <select id="findOrdersByContractId"  resultType="ssm.domain.Orders" parameterType="int">
+        select * from orders,contract_orders where orders.id=contract_orders.ordersid and contract_orders.contractid=#{id}
+    </select>
+
+</mapper>

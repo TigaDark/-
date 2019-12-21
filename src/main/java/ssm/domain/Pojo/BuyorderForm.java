@@ -1,18 +1,27 @@
-package ssm.domain;
+package ssm.domain.Pojo;
 
 public class BuyorderForm {
-    private int goodsquantityid;
+    private int ordersgoodsid;
     private String goodsname;
     private int goodsnums;
     private int goodsmin;
     private int minbuygoods;
+    private int surplusquantity;
 
-    public int getGoodsquantityid() {
-        return goodsquantityid;
+    public int getOrdersgoodsid() {
+        return ordersgoodsid;
     }
 
-    public void setGoodsquantityid(int goodsquantityid) {
-        this.goodsquantityid = goodsquantityid;
+    public void setOrdersgoodsid(int ordersgoodsid) {
+        this.ordersgoodsid = ordersgoodsid;
+    }
+
+    public int getSurplusquantity() {
+        return surplusquantity;
+    }
+
+    public void setSurplusquantity(int surplusquantity) {
+        this.surplusquantity = surplusquantity;
     }
 
     public String getGoodsname() {

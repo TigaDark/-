@@ -6,6 +6,7 @@
 
     <resultMap id="contractMap" type="ssm.domain.Contract">
         <id property="id" column="id"></id>
+        <result property="strid" column="strid"></result>
         <result property="start_time" column="start_time"></result>
         <result property="end_time" column="end_time"></result>
         <result property="fahuoid" column="fahuoid"></result>
@@ -24,6 +25,9 @@
         select * from contract
     </select>
 
+    <update id="editContractProcessByContractid">
+        update contract set progress=#{progress},end_time=#{endtimes} where id=#{id}
+    </update>
     <update id="editContractProcess">
         update contract set progress=#{progress},start_time=#{times} where id=#{id}
     </update>
@@ -31,11 +35,19 @@
         update contract set progress=#{progress},end_time=#{endtimes} where purchaseid=#{pruchaseid}
     </update>
 
-    <insert id="addContract" parameterType="ssm.domain.ContractForm">
+    <insert id="addContract" parameterType="ssm.domain.Pojo.ContractForm">
         insert into contract (customerid,purchaseid,userid) values (#{customerid},#{purchaseid},#{userid})
     </insert>
+    <select id="findContractById"  resultMap="contractMap">
+        select * from contract where id=#{id}
+    </select>
 
     <update id="editContract">
         update contract set customerid=#{customerid},purchaseid=#{purchaseid},userid=#{userid} where id=#{id}
     </update>
+
+    <select id="findContractByOrdersId"  resultMap="contractMap" parameterType="int">
+        select * from contract,contract_orders where contract_orders.contractid=contract.id and contract_orders.ordersid=#{id}
+    </select>
+
 </mapper>

@@ -1,4 +1,4 @@
-package ssm.domain;
+package ssm.domain.Pojo;
 
 public class CheckBuyorderInfo {
     private int id;

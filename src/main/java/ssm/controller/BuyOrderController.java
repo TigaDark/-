@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ssm.domain.Buyorder;
-import ssm.domain.BuyorderForm;
-import ssm.domain.CheckBuyorderInfo;
-import ssm.domain.SelectInfo;
+import ssm.domain.Pojo.BuyorderForm;
+import ssm.domain.Pojo.CheckBuyorderInfo;
+import ssm.domain.Pojo.SelectInfo;
 import ssm.service.BuyOrderService;
 import ssm.util.Response;
 
@@ -28,7 +28,7 @@ public class BuyOrderController {
     @RequestMapping("/addBuyOrder")
     public @ResponseBody Response Login(@RequestBody BuyorderForm buyorderForm) throws Exception {
         //获取进货单
-        Buyorder buyorder = new Buyorder(buyorderForm.getGoodsquantityid(),buyorderForm.getGoodsname(),buyorderForm.getMinbuygoods(),0,0);
+        Buyorder buyorder = new Buyorder(buyorderForm.getOrdersgoodsid(),buyorderForm.getGoodsname(),buyorderForm.getMinbuygoods(),0,0);
         buyOrderService.addBuyOrder(buyorder);
         Map<String,Object> data=new HashMap<>();
         Response response=new Response();

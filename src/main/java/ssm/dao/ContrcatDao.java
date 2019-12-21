@@ -2,8 +2,8 @@ package ssm.dao;
 
 import org.apache.ibatis.annotations.Param;
 import ssm.domain.Contract;
-import ssm.domain.ContractForm;
-import ssm.domain.ContracteditForm;
+import ssm.domain.Pojo.ContractForm;
+import ssm.domain.Pojo.ContracteditForm;
 
 import java.util.Date;
 import java.util.List;
@@ -19,4 +19,10 @@ public interface ContrcatDao {
     void addContract(ContractForm contractForm);
 
     void editContract(ContracteditForm contracteditForm);
+
+    void findContractById(int id);
+
+    Contract findContractByOrdersId(int ordersid);
+
+    void editContractProcessByContractid(@Param(value = "id")int id, @Param(value = "progress")int progress, @Param(value = "times")Date times);
 }

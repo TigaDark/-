@@ -14,4 +14,6 @@ public interface GoodsQuantityDao {
     void editgoodsstatusByid(@Param(value = "id")int id, @Param(value = "goodstatus")int goodstatus) throws Exception;
 
     int findPurchaseIdByid(int id);
+
+    void editsurplusByid(@Param(value = "id")int id, @Param(value = "surplus")int surplus);
 }

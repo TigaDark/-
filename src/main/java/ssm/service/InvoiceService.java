@@ -1,8 +1,8 @@
 package ssm.service;
 
-import org.springframework.stereotype.Service;
 import ssm.domain.Invoice;
-import ssm.domain.SelectInfo;
+import ssm.domain.Logistics;
+import ssm.domain.Pojo.SelectInfo;
 
 import java.util.List;
 
@@ -10,5 +10,5 @@ import java.util.List;
 public interface InvoiceService {
     List<Invoice> findInvoiceByInfo(SelectInfo selectInfo);
 
-    void confirmSent(Invoice invoice) throws Exception;
+    void confirmSent(int invoiceid , Logistics logistics) throws Exception;
 }

@@ -10,5 +10,13 @@ public interface BuyOrderDao {
 
     List<Buyorder> findBuyOrderByInfo(String query);
 
-    void editBuyOrder(@Param(value = "id")int id, @Param(value = "realquantity")int realquantity, @Param(value = "status")int status);
+    void editBuyOrder(@Param(value = "id")int id, @Param(value = "realquantity")int realquantity);
+
+    void editsurplusquantity(int minquantity);
+
+    Buyorder findBuyOrderById(int id);
+
+    void editBuyOrderStatus(@Param(value = "id")int id,@Param(value = "isbuy")int isbuy,@Param(value = "surplusquantity")int surplusquantity);
+
+    void editordersGoodstatus(int goodsquantityid, int i);
 }

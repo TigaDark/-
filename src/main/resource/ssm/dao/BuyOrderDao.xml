@@ -7,13 +7,20 @@
 <mapper namespace="ssm.dao.BuyOrderDao">
 
     <insert id="addBuyOrder" parameterType="ssm.domain.Buyorder" keyProperty="id" useGeneratedKeys="true">
-        insert into buyorder (goodsquantityid,goodsname,minquantity,realquantity,isbuy) values (#{goodsquantityid},#{goodsname},#{minquantity},#{realquantity},#{isbuy})
+        insert into buyorder (ordersgoodsid,goodsname,minquantity,realquantity,isbuy,surplusquantity) values (#{ordersgoodsid},#{goodsname},#{minquantity},#{realquantity},#{isbuy},#{surplusquantity})
     </insert>
     <select id="findBuyOrderByInfo"  resultType="ssm.domain.Buyorder" parameterType="String">
         select * from buyorder
     </select>
+    <select id="findBuyOrderById"  resultType="ssm.domain.Buyorder" parameterType="int">
+        select * from buyorder where id=#{id}
+    </select>
 
     <update id="editBuyOrder">
-        update buyorder set realquantity=#{realquantity} , isbuy=#{status} where id=#{id}
+        update buyorder set realquantity=#{realquantity} where id=#{id}
     </update>
+    <update id="editBuyOrderStatus">
+        update buyorder set isbuy=#{isbuy},surplusquantity=#{surplusquantity} where id=#{id}
+    </update>
+
 </mapper>

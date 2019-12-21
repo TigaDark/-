@@ -4,8 +4,6 @@ import java.util.List;
 
 public class Purchase {
     private int id;
-    //1-已付款 0-未付款
-    private int ispay;
     //属于某个客户的采购订单
     private Customer customer;
     //这个采购订单有多个商品
@@ -15,7 +13,6 @@ public class Purchase {
     public String toString() {
         return "Purchase{" +
                 "id=" + id +
-                ", ispay=" + ispay +
                 ", customer=" + customer +
                 '}';
     }
@@ -29,13 +26,6 @@ public class Purchase {
         this.id = id;
     }
 
-    public int getIspay() {
-        return ispay;
-    }
-
-    public void setIspay(int ispay) {
-        this.ispay = ispay;
-    }
 
     public Customer getCustomer() {
         return customer;

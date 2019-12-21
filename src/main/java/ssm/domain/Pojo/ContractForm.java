@@ -1,9 +1,18 @@
-package ssm.domain;
+package ssm.domain.Pojo;
 
 public class ContractForm {
+    private int strid;
     private int purchaseid;
     private int userid;
     private int customerid;
+
+    public int getStrid() {
+        return strid;
+    }
+
+    public void setStrid(int strid) {
+        this.strid = strid;
+    }
 
     public int getPurchaseid() {
         return purchaseid;

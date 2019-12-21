@@ -17,4 +17,6 @@ public interface CustomerDao {
     void addCustomer(Customer customer);
 
     Customer findCustomerByName(String name);
+
+    Customer findCustomerByinvoiceId(int invoiceid);
 }

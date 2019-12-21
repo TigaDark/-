@@ -1,7 +1,7 @@
 package ssm.service;
 
 
-import ssm.domain.SelectInfo;
+import ssm.domain.Pojo.SelectInfo;
 import ssm.domain.Users;
 
 import java.text.ParseException;

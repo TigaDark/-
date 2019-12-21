@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ssm.domain.*;
+import ssm.domain.Pojo.SelectInfo;
 import ssm.service.InvoiceService;
 import ssm.util.Response;
 
@@ -32,14 +33,15 @@ public class InvoiceController {
         return response;
     }
 
-    @RequestMapping("/confirmSent")
-    private @ResponseBody Response confirmSent(@RequestBody Invoice invoice)throws Exception{
+    @RequestMapping("/confirmSent/{invoiceid}")
+    private @ResponseBody Response confirmSent(@PathVariable(name = "invoiceid")int invoiceid,@RequestBody Logistics logistics)throws Exception{
         //确认发货
-        invoiceService.confirmSent(invoice);
+        invoiceService.confirmSent(invoiceid,logistics);
         Response response=new Response();
         Map<String,Object> data=new HashMap<>();
         response.success("确认发货成功!",200);
         return response;
+
     }
 
 }

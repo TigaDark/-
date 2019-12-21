@@ -167,6 +167,37 @@ CREATE TABLE `buyorder` (
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
+  `id` int(11) NOT NULL auto_increment,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `orders_goods`;
+CREATE TABLE `orders_goods` (
+  `id` int(11) NOT NULL auto_increment,
+  `ordersid` int(11) NOT NULL,
+  `goodsid` int(11) NOT NULL,
+  `quantity` int(11) default NULL,
+  `goodstatus` int(11) default NULL,
+  PRIMARY KEY  (`id`),
+  FOREIGN KEY (`goodsid`) REFERENCES `goods` (`id`),
+  FOREIGN KEY (`ordersid`) REFERENCES `orders` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+DROP TABLE IF EXISTS `contract_orders`;
+CREATE TABLE `contract_orders` (
+  `id` int(11) NOT NULL auto_increment,
+  `contractid` int(11) NOT NULL,
+  `ordersid` int(11) NOT NULL,
+  PRIMARY KEY  (`id`),
+  FOREIGN KEY (`contractid`) REFERENCES `contract` (`id`),
+  FOREIGN KEY (`ordersid`) REFERENCES `orders` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 
 
 

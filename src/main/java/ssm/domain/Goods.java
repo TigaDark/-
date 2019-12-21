@@ -3,7 +3,7 @@ package ssm.domain;
 public class Goods {
     private int id;
     private String name;
-    private int price;
+    private double price;
     private int nums;
     private int minn;
 
@@ -34,7 +34,7 @@ public class Goods {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 

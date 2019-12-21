@@ -8,7 +8,16 @@ public class GoodsQuantity {
     //0-未发货 1-发货中 2-发货完成 3-正在进货中
     private int goodstatus;
     private Goods goods;
+    //合同剩余数量
+    private int surplus;
 
+    public int getSurplus() {
+        return surplus;
+    }
+
+    public void setSurplus(int surplus) {
+        this.surplus = surplus;
+    }
 
     public int getGoodstatus() {
         return goodstatus;
@@ -22,8 +31,10 @@ public class GoodsQuantity {
     public String toString() {
         return "GoodsQuantity{" +
                 "id=" + id +
-                ", goods=" + goods +
                 ", quantity=" + quantity +
+                ", goodstatus=" + goodstatus +
+                ", goods=" + goods +
+                ", surplus=" + surplus +
                 '}';
     }
 

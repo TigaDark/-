@@ -8,19 +8,24 @@
     <resultMap id="invoiceMap" type="ssm.domain.Invoice">
         <id property="id" column="id"></id>
         <result property="issent" column="issent"></result>
-        <association property="goodsQuantity" javaType="ssm.domain.GoodsQuantity" select="ssm.dao.GoodsQuantityDao.findGoodsQuantityById" column="purchase_goodsid">
+        <association property="ordersGood" javaType="ssm.domain.OrdersGood" select="ssm.dao.OrdersGoodDao.findOrdersGoodById" column="orders_goodsid">
         </association>
         <association property="customer" javaType="ssm.domain.Customer" select="ssm.dao.CustomerDao.findCustomerById" column="customerid">
         </association>
     </resultMap>
 
-    <insert id="createInvoice" parameterType="ssm.domain.Invoice" keyProperty="id" useGeneratedKeys="true">
-        insert into Invoice (issent,purchase_goodsid,customerid) values (#{invoice.issent},#{invoice.goodsQuantity.id},#{customerid})
+    <insert id="createInvoice"  keyProperty="id" useGeneratedKeys="true">
+        insert into Invoice (issent,orders_goodsid,customerid) values (#{invoice.issent},#{invoice.ordersGood.id},#{customerid})
     </insert>
 
-
-    <select id="findInvoiceByInfo"  resultMap="invoiceMap" parameterType="String">
+    <select id="findCustomeridByid"  resultType="int">
+        select customerid from invoice where id=#{id}
+    </select>
+    <select id="findInvoiceByInfo"  resultMap="invoiceMap" >
         select * from invoice
+    </select>
+    <select id="findInvoiceByid"  resultMap="invoiceMap">
+        select * from invoice where id=#{id}
     </select>
 
     <update id="editissentById" parameterType="int">

@@ -30,4 +30,8 @@
     <select id="checkPurchase"  resultType="ssm.domain.Contract" parameterType="int">
         select * from contract where purchaseid=#{id}
     </select>
+    <select id="findPurchaseidBycontractid"  resultType="int" parameterType="int">
+        select purchaseid from contract where id=#{id}
+    </select>
+
 </mapper>

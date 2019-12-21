@@ -20,4 +20,8 @@ public interface InvoiceDao {
     List<Invoice> findInvoiceByInfo(String query);
 
     void editissentById(@Param(value = "id")int id, @Param(value = "issent")int issent);
+
+    int findCustomeridByid(int invoiceid);
+
+    Invoice findInvoiceByid(int invoiceid);
 }

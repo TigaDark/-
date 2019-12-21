@@ -1,10 +1,8 @@
 package ssm.testService;
 
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import ssm.dao.ContrcatDao;
 import ssm.domain.Contract;
-import ssm.domain.SelectInfo;
+import ssm.domain.Pojo.SelectInfo;
 import ssm.service.ContrcatService;
 import ssm.service.impl.ContrcatServiceImpl;
 

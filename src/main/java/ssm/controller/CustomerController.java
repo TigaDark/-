@@ -5,8 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ssm.domain.Customer;
-import ssm.domain.SelectInfo;
-import ssm.domain.Users;
+import ssm.domain.Pojo.SelectInfo;
 import ssm.service.CustomerService;
 import ssm.util.Response;
 

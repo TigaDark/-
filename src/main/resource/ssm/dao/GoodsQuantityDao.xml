@@ -10,6 +10,7 @@
         <id property="id" column="id"></id>
         <result property="quantity" column="quantity"></result>
         <result property="goodstatus" column="goodstatus"></result>
+        <result property="surplus" column="surplus"></result>
         <association property="goods" javaType="ssm.domain.Goods">
             <id property="id" column="gid"></id>
             <result property="name" column="name"></result>
@@ -34,5 +35,8 @@
     <select id="findPurchaseIdByid"  resultType="int" parameterType="int">
         select purchaseid from purchase_goods where id=#{id}
     </select>
+    <update id="editsurplusByid">
+        update purchase_goods set surplus=#{surplus} where id=#{id}
+    </update>
 
 </mapper>

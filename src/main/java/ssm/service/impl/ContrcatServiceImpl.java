@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ssm.dao.ContrcatDao;
 import ssm.domain.*;
+import ssm.domain.Pojo.ContractForm;
+import ssm.domain.Pojo.ContracteditForm;
+import ssm.domain.Pojo.SelectInfo;
 import ssm.service.ContrcatService;
 
 import java.util.Date;
@@ -17,7 +20,7 @@ public class ContrcatServiceImpl implements ContrcatService {
 
     @Override
     public List<Contract> findContractByInfo(SelectInfo selectInfo) throws Exception {
-        int total=0;
+        double total=0;
         //分页
         PageHelper.startPage(selectInfo.getPagenum(),selectInfo.getPagesize());
         //查询参数传入
@@ -43,6 +46,7 @@ public class ContrcatServiceImpl implements ContrcatService {
     @Override
     public void addContract(ContractForm contractForm) {
         //添加合同
+
         contrcatDao.addContract(contractForm);
     }
 

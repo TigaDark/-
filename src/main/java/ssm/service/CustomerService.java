@@ -1,8 +1,7 @@
 package ssm.service;
 
 import ssm.domain.Customer;
-import ssm.domain.SelectInfo;
-import ssm.domain.Users;
+import ssm.domain.Pojo.SelectInfo;
 
 import java.util.List;
 

@@ -1,8 +1,9 @@
 package ssm.service;
 
+import org.apache.ibatis.annotations.Param;
 import ssm.domain.Buyorder;
-import ssm.domain.CheckBuyorderInfo;
-import ssm.domain.SelectInfo;
+import ssm.domain.Pojo.CheckBuyorderInfo;
+import ssm.domain.Pojo.SelectInfo;
 
 import java.util.List;
 

@@ -4,8 +4,17 @@ public class Invoice {
     private int id;
     //0-未发货 1-已发货
     private int issent;
-    private GoodsQuantity goodsQuantity;
+    private OrdersGood ordersGood;
     private Customer customer;
+    private String logisticsid;
+
+    public String getLogisticsid() {
+        return "98961202459"+this.id;
+    }
+
+    public void setLogisticsid(String logisticsid) {
+        this.logisticsid = logisticsid;
+    }
 
     public Customer getCustomer() {
         return customer;
@@ -18,17 +27,17 @@ public class Invoice {
     public Invoice() {
     }
 
-    public Invoice(int issent, GoodsQuantity goodsQuantity) {
+    public Invoice(int issent, OrdersGood ordersGood) {
         this.issent = issent;
-        this.goodsQuantity = goodsQuantity;
+        this.ordersGood = ordersGood;
     }
 
-    public GoodsQuantity getGoodsQuantity() {
-        return goodsQuantity;
+    public OrdersGood getOrdersGood() {
+        return ordersGood;
     }
 
-    public void setGoodsQuantity(GoodsQuantity goodsQuantity) {
-        this.goodsQuantity = goodsQuantity;
+    public void setOrdersGood(OrdersGood ordersGood) {
+        this.ordersGood = ordersGood;
     }
 
     public int getId() {

@@ -12,14 +12,56 @@ public class Logistics {
     private Date times;
     private String timesStr;
     private String context;
+    private String start_place;
+    private String company;
+    private String strid;
 
-    public Logistics() {
+    @Override
+    public String toString() {
+        return "Logistics{" +
+                "id=" + id +
+                ", times=" + times +
+                ", timesStr='" + timesStr + '\'' +
+                ", context='" + context + '\'' +
+                ", start_place='" + start_place + '\'' +
+                ", compayny='" + company + '\'' +
+                ", strid='" + strid + '\'' +
+                '}';
     }
 
     public Logistics(Date times, String context) {
         this.times = times;
         this.context = context;
     }
+
+    public String getStart_place() {
+        return start_place;
+    }
+
+    public void setStart_place(String start_place) {
+        this.start_place = start_place;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompayny(String company) {
+        this.company = company;
+    }
+
+    public String getStrid() {
+        return "98961202459"+this.id;
+    }
+
+    public void setStrid(String strid) {
+        this.strid = strid;
+    }
+
+    public Logistics() {
+    }
+
+
 
     public String getTimesStr() {
         if(times!=null)

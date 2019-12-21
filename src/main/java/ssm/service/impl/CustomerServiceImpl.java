@@ -5,8 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ssm.dao.CustomerDao;
 import ssm.domain.Customer;
-import ssm.domain.SelectInfo;
-import ssm.domain.Users;
+import ssm.domain.Pojo.SelectInfo;
 import ssm.service.CustomerService;
 
 import java.util.List;
@@ -27,6 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void addCustomer(Customer customer) {
+
         customerDao.addCustomer(customer);
     }
 

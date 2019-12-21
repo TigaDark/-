@@ -2,29 +2,38 @@ package ssm.domain;
 
 public class Buyorder {
     private int id;
-    private int goodsquantityid;
+    private int ordersgoodsid;
     private String goodsname;
     private int minquantity;
     private int realquantity;
     private int isbuy;
+    private int surplusquantity;
 
     public Buyorder() {
     }
 
-    public Buyorder(int goodsquantityid, String goodsname, int minquantity, int realquantity, int isbuy) {
-        this.goodsquantityid = goodsquantityid;
+    public int getSurplusquantity() {
+        return surplusquantity;
+    }
+
+    public void setSurplusquantity(int surplusquantity) {
+        this.surplusquantity = surplusquantity;
+    }
+
+    public Buyorder(int ordersgoodsid, String goodsname, int minquantity, int realquantity, int isbuy) {
+        this.ordersgoodsid = ordersgoodsid;
         this.goodsname = goodsname;
         this.minquantity = minquantity;
         this.realquantity = realquantity;
         this.isbuy = isbuy;
     }
 
-    public int getGoodsquantityid() {
-        return goodsquantityid;
+    public int getOrdersgoodsid() {
+        return ordersgoodsid;
     }
 
-    public void setGoodsquantityid(int goodsquantityid) {
-        this.goodsquantityid = goodsquantityid;
+    public void setOrdersgoodsid(int ordersgoodsid) {
+        this.ordersgoodsid = ordersgoodsid;
     }
 
     public String getGoodsname() {
