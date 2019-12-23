@@ -37,6 +37,14 @@
         <association property="user" javaType="ssm.domain.Users" select="ssm.dao.UsersDao.findById" column="userid">
         </association>
     </resultMap>
+
+
+    <select id="findSaleticsByuserid"  resultMap="contractMap2">
+        select *,totalmoney as tl,sum(totalmoney) as a from contract where start_time &gt;= #{contracttime.starttime} and end_time &lt;= #{contracttime.endtime} and userid=#{id} group by userid
+    </select>
+    <select id="findContracticByuserid"  resultMap="contractMap2">
+        select *,totalmoney as tl,sum(totalmoney) as a from contract where userid=#{id} group by userid
+    </select>
     <select id="getCustomerticsBytime"  resultMap="contractMap2">
         select *,totalmoney as tl,sum(totalmoney) as a from contract where start_time &gt;= #{starttime} and end_time &lt;= #{endtime} group by customerid
     </select>

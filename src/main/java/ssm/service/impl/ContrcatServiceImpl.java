@@ -136,4 +136,16 @@ public class ContrcatServiceImpl implements ContrcatService {
         }
         return goodMap;
     }
+
+    @Override
+    public List<Contract> getSaleticsBysalename(String username) throws Exception {
+        int id = Integer.parseInt(username);
+        return contrcatDao.findContracticByuserid(id);
+    }
+
+    @Override
+    public List<Contract> getSaleticsBytime(String username, contracttime contracttime) throws Exception {
+        int id = Integer.parseInt(username);
+        return contrcatDao.findSaleticsByuserid(id,contracttime);
+    }
 }

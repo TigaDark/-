@@ -153,6 +153,25 @@ public class ContractController {
         response.success("获取成功",200);
         return response;
     }
+    @RequestMapping("/getSaletics/{username}")
+    public @ResponseBody Response getSaletics(@PathVariable("username") String username) throws Exception {
+        List<Contract> contracttics=contrcatService.getSaleticsBysalename(username);
+        Response response=new Response();
+        response.put("saletics",contracttics);
+        response.success("获取成功",200);
+        return response;
+    }
+
+    @RequestMapping("/getSaleticsBytime/{username}")
+    public @ResponseBody Response getSaleticsBytime(@PathVariable("username") String username,@RequestBody contracttime contracttime) throws Exception {
+        List<Contract> contracts=contrcatService.getSaleticsBytime(username,contracttime);
+
+        Map<String,Object> data=new HashMap<>();
+        Response response=new Response();
+        response.put("saletics",contracts);
+        response.success("获取成功",200);
+        return response;
+    }
 
 }
 

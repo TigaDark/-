@@ -32,11 +32,19 @@ public class UsersController {
      */
     @RequestMapping("/login")
     public @ResponseBody Response Login(@RequestBody loginForm user) throws Exception {
-        //获取用户身份 查询信息 返回其信息 暂时未验证密码账号
+        //获取用户身份 查询信息 返回其信息
         //应该要把其角色查出来！！！
-        Users users=usersService.findByName(user.getUsername());
-        Map<String,Object> data=new HashMap<>();
         Response response=new Response();
+        Users users=usersService.findByName(user.getUsername());
+        //用户不存在
+        if (users==null){
+            response.success("用户不存在",201);
+            return response;
+        }
+        if (!users.getPassword().equals(user.getPassword())){
+            response.success("密码错误",201);
+            return response;
+        }
         response.put("user",users);
         response.put("token","12313312");
         response.success("登录成功",200);

@@ -36,4 +36,8 @@ public interface ContrcatService {
     HashMap<String,Double> getgoodstics();
 
     HashMap<String, Double> getgoodsticsBytime(contracttime contracttime);
+
+    List<Contract> getSaleticsBysalename(String username) throws Exception;
+
+    List<Contract> getSaleticsBytime(String username, contracttime contracttime) throws Exception;
 }

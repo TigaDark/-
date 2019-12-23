@@ -25,7 +25,7 @@ public interface ContrcatDao {
 
     Contract findContractByOrdersId(int ordersid);
 
-    void editContractProcessByContractid(@Param(value = "id")int id, @Param(value = "progress")int progress, @Param(value = "times")Date times);
+    void editContractProcessByContractid(@Param(value = "id")int id, @Param(value = "progress")int progress, @Param(value = "endtimes")Date times);
 
     List<Contract> findContractByUserId(int userid);
 
@@ -36,4 +36,8 @@ public interface ContrcatDao {
     List<Contract> findCustomertics();
 
     List<Contract> getCustomerticsBytime(contracttime contracttime);
+
+    List<Contract> findContracticByuserid(int id);
+
+    List<Contract> findSaleticsByuserid(@Param(value = "id")int id,  @Param(value = "contracttime")contracttime contracttime);
 }
