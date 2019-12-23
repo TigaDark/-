@@ -1,10 +1,9 @@
 package ssm.service;
 
 import ssm.domain.Contract;
-import ssm.domain.Pojo.ContractForm;
-import ssm.domain.Pojo.ContracteditForm;
-import ssm.domain.Pojo.SelectInfo;
+import ssm.domain.Pojo.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface ContrcatService {
@@ -25,4 +24,16 @@ public interface ContrcatService {
     void addContract(ContractForm contractForm);
 
     void editContract(ContracteditForm contracteditForm);
+
+    List<Contract> findContractByUsername(SaleSelect selectInfo);
+
+    List<Contract> findContract();
+
+    List<Contract> findCustomertics();
+
+    List<Contract> getCustomerticsBytime(contracttime contracttime);
+
+    HashMap<String,Double> getgoodstics();
+
+    HashMap<String, Double> getgoodsticsBytime(contracttime contracttime);
 }

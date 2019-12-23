@@ -20,4 +20,6 @@ public interface UsersDao {
     void addsalers(Users users);
 
     void editsaler(Users users);
+
+    int findByRealName(String username);
 }

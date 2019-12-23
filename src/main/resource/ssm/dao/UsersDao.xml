@@ -39,6 +39,9 @@
     <insert id="addsalers" parameterType="ssm.domain.Users">
         insert into users (username,password,rid,realname,phone,address,entrytime,email) values (#{username},#{password},#{role.id},#{realname},#{phone},#{address},#{entrytime},#{email})
     </insert>
+    <select id="findByRealName"  resultType="int">
+        select id from users where realname=#{name}
+    </select>
 
     <update id="editsaler">
         update users set phone=#{phone},address=#{address},email=#{email},entrytime=#{entrytime} where id=#{id}

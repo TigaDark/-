@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import ssm.domain.Contract;
 import ssm.domain.Pojo.ContractForm;
 import ssm.domain.Pojo.ContracteditForm;
+import ssm.domain.Pojo.contracttime;
 
 import java.util.Date;
 import java.util.List;
@@ -25,4 +26,14 @@ public interface ContrcatDao {
     Contract findContractByOrdersId(int ordersid);
 
     void editContractProcessByContractid(@Param(value = "id")int id, @Param(value = "progress")int progress, @Param(value = "times")Date times);
+
+    List<Contract> findContractByUserId(int userid);
+
+    void editContractTotal(@Param(value = "id")int id, @Param(value = "totalmoney")double totalmoney);
+
+    List<Contract> findContract();
+
+    List<Contract> findCustomertics();
+
+    List<Contract> getCustomerticsBytime(contracttime contracttime);
 }

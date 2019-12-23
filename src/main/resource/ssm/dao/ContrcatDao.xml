@@ -21,6 +21,32 @@
         </association>
     </resultMap>
 
+    <resultMap id="contractMap2" type="ssm.domain.Contract">
+        <id property="id" column="id"></id>
+        <result property="strid" column="strid"></result>
+        <result property="start_time" column="start_time"></result>
+        <result property="end_time" column="end_time"></result>
+        <result property="fahuoid" column="fahuoid"></result>
+        <result property="jinhuoid" column="jinhuoid"></result>
+        <result property="totalmoney" column="a"></result>
+        <result property="progress" column="progress"></result>
+        <association property="customer" javaType="ssm.domain.Customer" select="ssm.dao.CustomerDao.findCustomerById" column="customerid">
+        </association>
+        <association property="purchase" javaType="ssm.domain.Purchase" select="ssm.dao.PurchaseDao.findPurchaseById" column="purchaseid">
+        </association>
+        <association property="user" javaType="ssm.domain.Users" select="ssm.dao.UsersDao.findById" column="userid">
+        </association>
+    </resultMap>
+    <select id="getCustomerticsBytime"  resultMap="contractMap2">
+        select *,totalmoney as tl,sum(totalmoney) as a from contract where start_time &gt;= #{starttime} and end_time &lt;= #{endtime} group by customerid
+    </select>
+    <select id="findCustomertics"  resultMap="contractMap2">
+        select *,totalmoney as tl,sum(totalmoney) as a from contract group by customerid
+    </select>
+    <select id="findContract"  resultMap="contractMap">
+        select * from contract
+    </select>
+
     <select id="findContractByInfo"  resultMap="contractMap" parameterType="String">
         select * from contract
     </select>
@@ -49,5 +75,11 @@
     <select id="findContractByOrdersId"  resultMap="contractMap" parameterType="int">
         select * from contract,contract_orders where contract_orders.contractid=contract.id and contract_orders.ordersid=#{id}
     </select>
+    <select id="findContractByUserId"  resultMap="contractMap" >
+        select * from contract where userid=#{id}
+    </select>
+    <update id="editContractTotal">
+        update contract set totalmoney=#{totalmoney} where id=#{id}
+    </update>
 
 </mapper>

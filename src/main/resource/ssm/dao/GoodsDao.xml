@@ -16,4 +16,9 @@
     <select id="findGoodsByName"  resultType="ssm.domain.Goods" parameterType="string">
         select * from goods where name=#{name}
     </select>
+
+    <select id="findAllGoods"  resultType="ssm.domain.Goods">
+        select * from goods
+    </select>
+
 </mapper>
